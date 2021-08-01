@@ -8,6 +8,9 @@ int main(void) {
 	cin.tie(NULL);
 	cout.tie(NULL);
 
+	// git add    : unstaged -> staged
+	// git commit : staged   -> commited
+	// git push   : remote/local ¹Ý¿µ
 	cout << "hello world!";
 
 	return 0;
