@@ -8,10 +8,11 @@ int main(void) {
 	cin.tie(NULL);
 	cout.tie(NULL);
 
+	// ì»¤ë°‹ ì—°ìŠµ
 	// git add    : unstaged -> staged
 	// git commit : staged   -> commited
-	// git push   : remote/local ¹İ¿µ
-	// git pull   : remote/local master¿¡¼­ º¯°æµÈ Ä¿¹ÔµéÀ» fetch + merge = pull
+	// git push   : remote/local ë°˜ì˜
+	// git pull   : remote/local masterì—ì„œ ê°’ ê°€ì ¸ì˜¤ê¸°(fetch + merge = pull)
 	cout << "hello world!";
 
 	return 0;
