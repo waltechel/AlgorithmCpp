@@ -12,7 +12,7 @@ int main(void) {
 	// git add    : unstaged -> staged
 	// git commit : staged   -> commited
 	// git push   : remote/local 반영
-	// git pull   : remote/local master에서 값 가져오기(fetch + merge = pull)
+	// git pull   : remote/local master에서 커밋 가져오기(fetch + merge = pull)
 	cout << "hello world!";
 
 	return 0;
