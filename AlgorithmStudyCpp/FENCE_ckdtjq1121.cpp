@@ -19,15 +19,15 @@ int main()
 		}
 
 		int ret = 0;
-		int width;
+		int area;
 		for (int j = 0; j < num; j++)
 		{
-			width = fence[j];
+			area = fence[j];
 			for (int k = j + 1; k < num; k++)
 			{
 				if (fence[j] <= fence[k])
 				{
-					width += fence[j];
+					area += fence[j];
 				}
 				else
 					break;
@@ -36,13 +36,13 @@ int main()
 			{
 				if (fence[j] <= fence[k])
 				{
-					width += fence[j];
+					area += fence[j];
 				}
 				else
 					break;
 			}
 
-			ret = max(ret, width);
+			ret = max(ret, area);
 		}
 
 		cout << ret << "\n";
