@@ -16,17 +16,13 @@ int main() {
 		f[i] = 0;
 	}
 
-	for (int i = 1, j = 0, cnt = 0; i < P.length(); ) {
+	for (int i = 1, j = 0; i < P.length(); ) {
 		while (i < P.length() && j < P.length() && P[i] == P[j]) {
-			f[i] = ++cnt;
-			i++;
-			j++;
+			f[i++] = ++j;
 		}
 		if (j == 0) {
 			i++;
-			cnt = 0;
 		} else {
-			cnt = f[j - 1];
 			j = f[j - 1];
 		}
 	}
