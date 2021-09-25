@@ -41,6 +41,7 @@ void getEulerCircuit(int here, vector<int>& circuit)
 {
 	for (int there = 0; there < adj.size(); there++)
 	{
+		// 순서에 상관 없이 더이상 갈 곳이 없을 경우 이전에 가지 않았던 엣지부터 다시 가서 나머지 엣지를 모두 순환을 한다.
 		while (adj[here][there] > 0)
 		{
 			adj[here][there]--;
