@@ -73,7 +73,7 @@ int main()
 		{
 			perm[i] = arr[i].second;
 		}
-		
+
 		cout << dist[perm] << "\n";
 	}
 }
