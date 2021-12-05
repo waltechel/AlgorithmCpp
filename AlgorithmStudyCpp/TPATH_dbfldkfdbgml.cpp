@@ -38,6 +38,9 @@ int main() {
 		}
 
 		sort(graph.begin(), graph.end(), comparator);
+		// 여기를 속도로 봐도 괜찮다.
+		// 속도는 1000 이하의 음이 아닌 정수이다.
+		// 미니멈이 갱신되지 않는다면 바로 넘어간다.
 		for (int i = 0; i < M; i++) {
 			for (int j = 0; j < N; j++) {
 				parent[j] = j;
