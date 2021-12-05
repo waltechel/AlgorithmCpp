@@ -33,14 +33,14 @@ int main() {
 		string s; cin >> s;
 		auto a = new int[s.size() + 1]();
 		for(int i = 3; i <= s.size(); i++) {
-			a[i] = a[i - 3] + f(s, 3, i - 3);
-			if(i > 3) {
+			if(i == 3 || i > 5) a[i] = a[i - 3] + f(s, 3, i - 3);
+			if(i == 4 || i > 6) {
 				auto const x = a[i - 4] + f(s, 4, i - 4);
-				if(a[i] > x) a[i] = x;
+				if(a[i] == 0 || a[i] > x) a[i] = x;
 			}
-			if(i > 4) {
+			if(i == 5 || i > 7) {
 				auto const x = a[i - 5] + f(s, 5, i - 5);
-				if(a[i] > x) a[i] = x;
+				if(a[i] == 0 || a[i] > x) a[i] = x;
 			}
 		}
 		cout << a[s.size()] << '\n';
