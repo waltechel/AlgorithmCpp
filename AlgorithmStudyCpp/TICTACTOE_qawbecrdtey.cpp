@@ -20,6 +20,7 @@ int f(int dp[512][512], int O, int X) {
 	if(won(X)) return dp[O][X] = 1;
 	if(won(O)) return dp[O][X] = -1;
 	int l = left(O, X);
+	if(!l) return dp[O][X] = 0;
 	int tie = 1;
 	if(!turn(O, X)) { // X turn
 		for(int i = 0; i < 9; i++) {
