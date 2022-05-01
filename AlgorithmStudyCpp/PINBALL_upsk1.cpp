@@ -1,91 +1,76 @@
 #include <bits/stdc++.h>
 using namespace std;
-int cnt[130];
-bool check(string s) {
-    for (int i = 'A'; i <= 'Z'; i++)cnt[i] = 0;
-    for (int i = 0; i < s.size(); i++) {
-        if (cnt[s[i]])return false;
-        cnt[s[i]]++;
-        int i2 = i + 1;
-        while (i2 < s.size()) {
-            if (s[i] == s[i2])i2++;
-            else break;
-        }
-        i2--;
-        i = i2;
+const double EPSILON = 1e-9;
+const double INFTY = 1e200;
+const double PI = 2.0 * acos(0.0);
+//벡터는 방향과 거리의 쌍이다.
+//시작점이 중요하지 않기떄문에 원점으로 부터 x,y 를 가르키는 방식으로 표현
+
+struct vector2 {
+    double x, y;
+    explicit vector2(double x_ = 0, double y_ = 0) :x(x_), y(y_) {}
+    bool operator==(const vector2& rhs)const {
+        return x == rhs.x && y == rhs.y;
     }
-    return true;
+    bool operator<(const vector2& rhs)const {
+        return x != rhs.x ? x < rhs.x : y < rhs.y;
+    }
+    vector2 operator+(const vector2& rhs)const {
+        return vector2(x + rhs.x, y + rhs.y);
+    }
+    vector2 operator-(const vector2& rhs)const {
+        return vector2(x - rhs.x, y - rhs.y);
+    }
+    //벡터 곱은 rhs만큼 길이를 늘려준다.
+    vector2 operator*(double rhs)const {
+        return vector2(x * rhs, y * rhs);
+    }
+    // 벡터 길이 반환
+    double norm()const {
+        return hypot(x, y);
+    }
+    vector2 normalize() const {
+        return vector2(x / norm(), y / norm());
+    }
+    //벡터의 각도
+    double polar()const {
+        return fmod(atan2(y, x) + 2 * PI, 2 * PI);
+    }
+    //벡터 내적 구현 (inner product)
+    //1. 두 벡터의 사이각 구할 수 있다
+    //2. 벡터 직각 여부 확인할 수 있다
+    //3. 벡터의 사영 (b 벡터에 수직으로 햇빛을 쬘 떄 a가 b에 드리우는 그림자를 사영이라한다)
+
+    double dot(const vector2& rhs)const {
+        return x * rhs.x + y * rhs.y;
+    }
+    //벡터 외적 구현 (cross product)
+    //1.면적 계산할 수 있다 (외적의 절대 값은 a,b를 두 변으로하는 평행 사변형의 넓이
+    //2.두 벡터의 방향 판별 (외적 값이 양수면 반시계 , 음수면 시계방향 , 평행이면 0 반환)
+
+    double cross(const vector2& rhs)const {
+        return x * rhs.y - rhs.x * y;
+    }
+    vector2 project(const vector2& rhs)const {
+        vector2 r = rhs.normalize();
+        return r * r.dot(*this);
+    }
+};
+double ccw(vector2 a, vector2 b) {
+    return a.cross(b);
 }
-string s[101];
-bool c[101];
-vector<string> v;
+//이후 두 선분의 교차 여부내용이지만 아직은 어려워 보인다.
+
+//공을 제외한 나머지 원들의 반지름을 1 증가시킨 후 
+//공의 위치벡터와 방향벡터를 구한 후 모든 원들을 탐색하여 부딪히는 최소 시간을 찾는 과정을 반복한다 ? 
+
 int main() {
     ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+
     int T;
     cin >> T;
-    int tc = 1;
-    while (T--) {
-        v.clear();
-        int n;
-        cin >> n;
-        for (int i = 0; i < n; i++)c[i] = false;
-        for (int i = 'A'; i <= 'Z'; i++)cnt[i] = 0;
-        bool flag = true;
-        string ans = "";
 
-        for (int i = 0; i < n; i++) {
-            cin >> s[i];
-            if (check(s[i]) == false) {
-                flag = false;
-            }
-            v.push_back(s[i]);
-        }
-        if (flag == false) {
-            cout << "Case #" << tc++ << ": IMPOSSIBLE\n";
-            continue;
-        }
-        int tnum = 0;
-        while (tnum < 110) {
-            int idx1 = -1, idx2 = -1;
-            string temp = "";
-            for (int i = 0; i < v.size(); i++) {
-                for (int j = 0; j < v.size(); j++) {
-                    if (i == j)continue;
-                    if (v[i][0] == v[j].back()) {
-                        idx1 = i;
-                        idx2 = j;
-                        temp = v[j] + v[i];
-                        break;
-                    }
-                    if (v[i].back() == v[j][0]) {
-                        idx1 = i;
-                        idx2 = j;
-                        temp = v[i] + v[j];
-                        break;
-                    }
-                }
-                if (idx1 != -1)break;
-            }
-            if (idx1 == -1)break;
-            vector<string> v2;
-            for (int i = 0; i < v.size(); i++) {
-                if (i == idx1 || i == idx2)continue;
-                v2.push_back(v[i]);
-            }
-            v.clear();
-            v.push_back(temp);
-            for (int i = 0; i < v2.size(); i++) {
-                v.push_back(v2[i]);
-            }
-            tnum++;
-        }
-        for (int i = 0; i < v.size(); i++)ans += v[i];
-        //cout << ans << '\n';
-        if (check(ans) == false)flag = false;
-        if (flag == false) {
-            cout << "Case #" << tc++ << ": IMPOSSIBLE\n";
-            continue;
-        }
-        cout << "Case #" << tc++ << ": " << ans << '\n';
+    while (T--) {
+
     }
 }
