@@ -13,6 +13,7 @@ int main() {
 
 	int N;
 	cin >> N;
+	// string으로 만들 수 있다.
 	map<long long, int> countMap;
 
 	for (int i = 0; i < N; i++) {
@@ -24,11 +25,12 @@ int main() {
 		// 그런데 왜 insert는 안될까?
 		for (int j = 0; j < line.length(); j++) {
 			int a = (int)(line[j] - 'a') + 1;
-			hashNum *= 26;
+			hashNum *= 27;
 			hashNum += a;
 		}
 		int cnt = countMap[hashNum];
-		countMap[hashNum]++;
+		//countMap[hashNum]++;
+		countMap.insert({ hashNum, cnt + 1 });
 
 		if (cnt == 0) {
 			cout << line << "\n";

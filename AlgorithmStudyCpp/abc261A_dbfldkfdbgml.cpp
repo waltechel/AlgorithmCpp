@@ -5,6 +5,11 @@
 #include<map>
 #include<set>
 
+/*
+	l과 r을 비교해서 풀 수 있다.
+	max(l) 왼쪽은 겹치지 않고, min(r) 오른쪽도 겹치지 않으며
+	r < l 이라면 두 막대는 서로 떨어져 있다.
+*/
 using namespace std;
 
 int main() {
