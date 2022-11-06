@@ -13,6 +13,7 @@ int** B;
 /*
 	그냥 한번씩 해보면 어떨까?
 	이거는 안되고, 비트마스크를 써서 줄여보도록 한다.
+	디버깅을 못함
 */
 int main() {
 	ios_base::sync_with_stdio(false);
@@ -37,7 +38,7 @@ int main() {
 			cin >> B[i][j];
 		}
 	}
-	
+
 	bool isFind = false;
 	for (int rowState = 1; rowState < (1 << R1); rowState++) {
 		for (int colState = 1; colState < (1 << C1); colState++) {
@@ -75,21 +76,38 @@ int main() {
 					colCount++;
 				}
 			}
-			if (rowCount != R2 && colCount != C2) {
+			if (rowCount != R2 || colCount != C2) {
 				continue;
 			}
 
+			int start_A_row = 10 - R1;
+			int start_A_col = 10 - C1;
 
-		
 			isFind = true;
-			
+			for (int i = start_A_row, rowIndexOfA = 0, rowIndexOfB = 0; i < 10; i++, rowIndexOfA++) {
+				if (rowCheckList[i] == 0) {
+					continue;
+				}
+				for (int j = start_A_col, colIndexOfA = 0, colIndexOfB = 0; j < 10; j++, colIndexOfA++) {
+					if (colCheckList[j] == 0) {
+						continue;
+					}
+					if (A[rowIndexOfA][colIndexOfA] != B[rowIndexOfB][colIndexOfB]) {
+						isFind = false;
+					}
+					colIndexOfB++;
+				}
+				rowIndexOfB++;
+			}
+
 			if (isFind) {
-				goto FINISH;
+				cout << "YES";
+				return 0;
 			}
 		}
 	}
 
-	FINISH:
+
 	if (isFind) {
 		cout << "YES";
 	} else {
