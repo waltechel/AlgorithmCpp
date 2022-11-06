@@ -24,5 +24,8 @@ int main() {
 		cout << N / 3 * yPrice + N % 3 * xPrice;
 	}
 
+	// 그냥 min 값 주고 찾으면 된다.
+	// cout << min(N * xPrice, N / 3 * yPrice + N % 3 * xPrice);
+
 	return 0;
 }

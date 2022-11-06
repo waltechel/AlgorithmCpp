@@ -16,10 +16,9 @@ int main() {
 	cin >> L >> R;
 
 	string line = "atcoder";
-	for (int i = L -1 ; i <= R -1 ; i++) {
+	for (int i = L - 1 ; i <= R - 1; i++) {
 		cout << line[i];
 	}
-
 
 	return 0;
 }

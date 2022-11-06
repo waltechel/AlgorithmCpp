@@ -15,39 +15,51 @@ int main() {
 	ios_base::sync_with_stdio(false);
 	cin.tie(NULL);
 
-	int N, P, Q, R;
+	long long N, P, Q, R;
 
 	cin >> N >> P >> Q >> R;
-	int* A = new int[N];
+	long long* A = new long long[N];
 	for (int i = 0; i < N; i++) {
 		cin >> A[i];
 	}
 
-	long long* B = new long long[N];
-	for (int i = 0; i < N; i++) {
-		B[i] = A[i];
-		if (i > 0) {
+	long long* B = new long long[N + 3];
+	for (int i = 0; i < N + 3; i++) {
+		if (i < N) {
+			B[i] = A[i];
+		}
+		if (i >= 1) {
 			B[i] += B[i - 1];
 		}
 	}
-	
+
 	bool canFind = false;
-	for (int x = 0; x <= N; x++) {
-		for (int y = x + 1; y <= N; y++) {
+	int x = 0, y = 1, z = 2, w = 3;
+	for (; x <= N; x++) {
+		for (; y <= N; y++) {
+			if (!(x < y)) {
+				y = x + 1;
+			}
 			long long candiP = B[y - 1] - (x >= 1 ? B[x - 1] : 0);
 			if (candiP < P) {
 				continue;
 			} else if (candiP > P) {
 				break;
 			} else if (candiP == P) {
-				for (int z = y + 1; z <= N; z++) {
+				for (; z <= N; z++) {
+					if (!(y < z)) {
+						z = y + 1;
+					}
 					long long candiQ = B[z - 1] - B[y - 1];
 					if (candiQ < Q) {
 						continue;
 					} else if (candiQ > Q) {
 						break;
 					} else if (candiQ == Q) {
-						for (int w = z + 1; w <= N; w++) {
+						for (; w <= N; w++) {
+							if (!(z < w)) {
+								w = z + 1;
+							}
 							long long candiR = B[w - 1] - B[z - 1];
 							if (candiR < R) {
 								continue;

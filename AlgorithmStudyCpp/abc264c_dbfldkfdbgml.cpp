@@ -101,18 +101,13 @@ int main() {
 			}
 
 			if (isFind) {
-				cout << "YES";
+				cout << "Yes";
 				return 0;
 			}
 		}
 	}
 
-
-	if (isFind) {
-		cout << "YES";
-	} else {
-		cout << "NO";
-	}
+	cout << "No";
 
 	return 0;
 }
