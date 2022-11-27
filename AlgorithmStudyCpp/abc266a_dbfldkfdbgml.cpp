@@ -3,23 +3,24 @@
 #include<algorithm>
 #include<string>
 #include<map>
+#include<unordered_map>
 #include<set>
+#include<queue>
+#include<stack>
+#include<unordered_set>
 
 using namespace std;
+
+
 
 int main() {
 	ios_base::sync_with_stdio(false);
 	cin.tie(NULL);
 
-	int L, R;
+	string line;
+	cin >> line;
 
-	cin >> L >> R;
-
-	string line = "atcoder";
-	for (int i = L - 1 ; i <= R - 1; i++) {
-		cout << line[i];
-	}
+	cout << line[line.length() / 2];
 
 	return 0;
 }
-
