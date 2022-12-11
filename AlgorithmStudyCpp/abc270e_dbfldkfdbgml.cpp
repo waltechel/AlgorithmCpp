@@ -13,6 +13,7 @@
 using namespace std;
 
 // 몇 번 뺑뺑이를 돌았는지만 알면 나머지는 대충 알 수 있다.
+// priorityQueue를 쓰면 nlogn으로 할 수 있다.
 
 int main() {
 
