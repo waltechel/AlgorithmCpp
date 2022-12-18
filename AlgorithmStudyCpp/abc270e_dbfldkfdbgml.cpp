@@ -16,7 +16,7 @@ using namespace std;
 // priorityQueue를 쓰면 nlogn으로 할 수 있다.
 
 int main() {
-
+	 
 	ios_base::sync_with_stdio(false);
 	cin.tie(NULL);
 
