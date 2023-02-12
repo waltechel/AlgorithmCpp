@@ -5,6 +5,11 @@
 
 using namespace std;
 
+/*
+	set<int> Set은 순회가 가능하다.
+	set은 이진 트리로 구성되어 있어 순회가 가능하다.
+*/
+
 int main() {
 
 	ios_base::sync_with_stdio(false);

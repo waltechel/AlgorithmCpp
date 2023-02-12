@@ -5,6 +5,9 @@
 
 using namespace std;
 
+/*
+	a, b, c의 합 모듈러를 하면 쉽게 구할 수 있다.
+*/
 
 int main() {
 	ios_base::sync_with_stdio(false);
