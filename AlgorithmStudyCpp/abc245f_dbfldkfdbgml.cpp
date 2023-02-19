@@ -10,7 +10,7 @@ using namespace std;
 vector<int>graph[200001];
 int finished[200001];
 int ordering[200001];
-bool cycled[200001];
+int cycled[200001];
 int order;
 vector<vector<int>> scc;
 stack<int> stk;
@@ -107,7 +107,7 @@ int main() {
 
     for (int i = 1; i <= N; i++) {
         if (cycled[i] == false) {
-            dfs2(1, 0);
+            dfs2(i, 0);
         }
     }
 
