@@ -22,7 +22,9 @@ int main() {
 		for (int i = 1; i <= 2 * N + 1; i++) {
 			if (list[i] == false) {
 				list[i] = true;
-				cout << i << "\n";
+				// After each output, you must flush Standard Output. Otherwise, you may get .
+				cout << i << endl;
+				// cout.flush();
 				break;
 			}
 		}

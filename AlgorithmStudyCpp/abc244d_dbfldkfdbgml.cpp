@@ -5,6 +5,11 @@
 #include <map>
 #include <stack>
 
+/*
+	swap의 횟수가 홀수냐 짝수냐를 결정한다.
+	세 개의 수 중 한 개만 다르면 안된다. 0개면 되고, 3개면 순열 사이클 분할, 2개면 안된다. 1개 다른 경우는 없다. 
+*/
+
 using namespace std;
 
 int main() {

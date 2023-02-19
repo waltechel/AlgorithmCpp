@@ -7,19 +7,24 @@
 
 using namespace std;
 
+// 이렇게 하면 안될 거 같은데....
+
 int main() {
 
 	ios_base::sync_with_stdio(false);
 	cin.tie(nullptr);
 	cout.precision(10);
 
-	int N;
-	string S;
+	int A, B, C, D;
+	cin >> A >> B >> C >> D;
+	int Takahashi = A * 60 + B;
+	int Aoki = C * 60 + D + 1;
 
-	cin >> N;
-	cin >> S;
-	// string은 내부적으로는 char vector다.
-	cout << S.back() << "";
-
+	if (Takahashi < Aoki) {
+		cout << "Takahashi";
+	} else {
+		cout << "Aoki";
+	}
+	
 	return 0;
 }

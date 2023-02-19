@@ -8,7 +8,7 @@
 using namespace std;
 
 // 비트마스크 DP
-// int [state][i] dp : i 번째 점까지 왔을 때 S 상태일 때 goodpath의 길이
+// int [state][i] dp : i 번째 점까지 왔을 때 S 상태일 때 shortest goodpath의 길이
 // 문제의 답 int[state][점] 까지의 합
 // BFS를 이용해서 탐색해서 갱신해버림
 

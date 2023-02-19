@@ -7,6 +7,10 @@
 
 using namespace std;
 
+/*
+	시계방향을 표현하는 게 짜증나는 문제
+*/
+
 vector<vector<int>> direction = { {0, 1}, {-1, 0}, {0, -1}, {1, 0} };
 
 int main() {
