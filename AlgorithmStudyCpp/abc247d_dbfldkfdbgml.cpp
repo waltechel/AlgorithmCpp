@@ -30,6 +30,8 @@ int main() {
 			cin >> c;
 			long long answer = 0;
 			while (c) {
+				// pair<int, int>& node = list[index];
+				// pair<int, int>& node2 = node;
 				if(list[index].second > c){
 					answer += (long long)list[index].first * c;
 					list[index].second -= c;

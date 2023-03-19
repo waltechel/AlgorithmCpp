@@ -7,6 +7,9 @@
 
 using namespace std;
 
+/*
+	- 그래프 그리고 풀 거 같다.
+*/
 int main() {
 	ios_base::sync_with_stdio(false);
 	cin.tie(nullptr);
